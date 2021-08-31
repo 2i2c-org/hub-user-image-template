@@ -1,0 +1,12 @@
+# Environment we need *on top* of base PANGEO stack
+# Get list of pangeo packages from https://github.com/pangeo-data/pangeo-docker-images/blob/master/pangeo-notebook/packages.txt
+# BUT REMEMBER TO PICK THE HASH THAT CORRESPONDS TO OUR BASE IMAGE
+channels:
+  - conda-forge
+
+dependencies:
+  # Packages required for image
+  - jupyter_contrib_nbextensions==0.5.1
+
+  # Add other packages here
+  # - 
