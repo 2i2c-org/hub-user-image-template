@@ -16,9 +16,13 @@ jobs:
     - name: Update jupyter dependencies with repo2docker
       uses: jupyterhub/repo2docker-action@master
       with:
-        # Make sure username & password/token matches your registry credentials
+        # Make sure username & password/token pair matches your registry credentials
         DOCKER_USERNAME: ${{ secrets.QUAY_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.QUAY_PASSWORD }}
         DOCKER_REGISTRY: "quay.io"
-        # Uncomment the following line with the right quay image
-        # IMAGE_NAME: user/hub-user-image
+
+        # Uncomment and nmdify the following line with your image name.
+        #IMAGE_NAME: user/hub-user-image
+
+        # Uncomment this line to push the built image to the registry
+        NO_PUSH: true
