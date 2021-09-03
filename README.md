@@ -47,7 +47,7 @@ Edit [build.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/main/
 
 * Create a pull request with this commit, or push it dirrectly to the `main` branch.
 
-* Merging the PR above or directly pushing the commit to the `main` branch, will kick off the GitHub Action to build and push the container image. Wait for this action to finish.
+* If you merge the PR above or directly push the commit to the `main` branch, the GitHub Action will automatically build and push the container image. Wait for this action to finish.
 
 TODO: add screenshot with where the actions tab is.
 
