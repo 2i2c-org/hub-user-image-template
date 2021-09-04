@@ -39,6 +39,7 @@ Edit lines 24 and 25 of [build.yaml](https://github.com/2i2c-org/hub-user-image-
 
 * uncomment the `IMAGE_NAME` option
 * replace `<quay-username>/<repository-name>` with the info of the `quay.io` repository created at step 2
+* Commit the changes you've made to `build.yaml`
 
 ### 4. Define the environment wanted
 
