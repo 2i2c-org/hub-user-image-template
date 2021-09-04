@@ -26,7 +26,7 @@ Create a new repository from `hub-user-image-template` repository, by clicking t
 
 Follow all the instructions (except the last step), provided by the [repo2docker-action docs](https://github.com/jupyterhub/repo2docker-action#push-image-to-quayio) on how to allow the built image to be pushed to [quay.io](https://quay.io/).
 
-At end, you should have:
+When you have completed these steps, you should have:
 
 * a quay.io repository of the form `quay.io/<quay-username>/<repository-name>`
 * two GitHub secrets **QUAY_USERNAME** (the user name of the `quay.io` robot account) and **QUAY_PASSWORD** (the password of the `quay.io` robot account) set on your newly created GitHub repository.
