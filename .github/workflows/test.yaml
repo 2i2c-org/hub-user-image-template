@@ -1,4 +1,4 @@
-name: Build container image
+name: Test container image build (no push)
 
 on:
   pull_request:
