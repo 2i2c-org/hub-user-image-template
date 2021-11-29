@@ -41,6 +41,8 @@ Edit lines 24 and 25 of [build.yaml](https://github.com/2i2c-org/hub-user-image-
 * replace `<quay-username>/<repository-name>` with the info of the `quay.io` repository created at step 2
 * Commit the changes you've made to `build.yaml`
 
+Edit lines 20 and 21 of [test.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/main/.github/workflows/test.yaml#L20-L21) in the same way.
+
 ### 4. Define the environment wanted
 
 * Modify [the environment.yml](https://github.com/2i2c-org/hub-user-image-template/blob/main/environment.yml) file and add all the packages you want installed in the conda environment. Note that repo2docker already installs [this list](https://github.com/jupyterhub/repo2docker/blob/HEAD/repo2docker/buildpacks/conda/environment.yml) of packages. More about what you can do with `environment.yml`, can be found in the [repo2docker docs](https://repo2docker.readthedocs.io/en/latest/config_files.html#environment-yml-install-a-conda-environment).
