@@ -1,0 +1,21 @@
+name: Test container image build
+
+on:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: checkout files in repo
+      uses: actions/checkout@main
+
+    - name: update jupyter dependencies with repo2docker
+      uses: jupyterhub/repo2docker-action@master
+      with: # make sure username & password/token matches your registry
+        NO_PUSH: "true"
+        DOCKER_REGISTRY: "quay.io"
+
+        # Uncomment and modify the following line with your image name.
+        # IMAGE_NAME: "<quay-username>/<repository-name>"
