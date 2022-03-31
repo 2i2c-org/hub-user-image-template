@@ -24,7 +24,7 @@ Create a new repository from `hub-user-image-template` repository, by clicking t
 
 ### 2. Hook the new repository to [quay.io](https://quay.io/)
 
-Follow all the instructions (except the last step), provided by the [repo2docker-action docs](https://github.com/jupyterhub/repo2docker-action#push-image-to-quayio) on how to allow the built image to be pushed to [quay.io](https://quay.io/).
+Follow all the instructions (except the last step), provided by the [repo2docker-action docs](https://github.com/jupyterhub/repo2docker-action#push-repo2docker-image-to-quayio) on how to allow the built image to be pushed to [quay.io](https://quay.io/).
 
 When you have completed these steps, you should have:
 
@@ -33,15 +33,34 @@ When you have completed these steps, you should have:
 
   ![Secrets](images/secrets.png)
 
-### 3. Update repo2docker-action config
+### 3. Update workflow config to push the image to quay.io
 
-Edit line 35 of [build.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/main/.github/workflows/build.yaml#L34-L35) and:
+Step 2 should have provided the appropriate credentials to push the image to quay.io. But the `IMAGE_NAME` option also has to be configured for the push to quay.io to happen. Since this template repository provides two GitHub workflows that can build and push the image to quay.io, below are the steps to configure `IMAGE_NAME` for each of them.
+
+#### Enable quay.io image push for [build.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/main/.github/workflows/build.yaml)
+
+The [build.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/main/.github/workflows/build.yaml) workflow builds the container image and pushes it to quay.io **if** credentials and image name are properly set. This happens on every pushed commit on the main branch of the repo.
+
+To enable pushing to the appropriate quay.io repository, edit line 35 of [build.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/main/.github/workflows/build.yaml#L34-L35) and:
 
 * uncomment the `IMAGE_NAME` option
 * replace `<quay-username>/<repository-name>` with the info of the `quay.io` repository created at step 2
-* Commit the changes you've made to `build.yaml`
+* commit the changes you've made to `build.yaml`
 
-Edit lines 31 of [test.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/MAIN/.github/workflows/test.yaml#L30-L31) in the same way.
+#### Enable quay.io image push for [test.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/MAIN/.github/workflows/test.yaml)
+
+The [test.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/MAIN/.github/workflows/test.yaml) workflow builds the container image on pull requests. It can also push it to quay.io **if** credentials, image name are correctly set and [`NO_PUSH`](https://github.com/jupyterhub/repo2docker-action#optional-inputs) option is removed.
+
+To enable pushing to the appropriate quay.io repository:
+
+* edit lines 31 of [test.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/MAIN/.github/workflows/test.yaml#L30-L31) and:
+  * uncomment the `IMAGE_NAME` option
+  * replace `<quay-username>/<repository-name>` with the info of the `quay.io` repository created at step 2
+  * commit the changes you've made to `build.yaml`
+
+* edit lines 27 of [test.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/main/.github/workflows/test.yaml#L27) and remove the `NO_PUSH: "true"` line. This will disable verbose mode and allow the image being pushed to the registry.
+
+The [Optional Inputs](https://github.com/jupyterhub/repo2docker-action#optional-inputs) section in the [jupyterhub/repo2docker-action](https://github.com/jupyterhub/repo2docker-action) docs provides more details about the `NO_PUSH` option, but also additional inputs that can be passed to the repo2docker-action.
 
 ### 4. Define the environment wanted
 
