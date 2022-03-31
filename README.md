@@ -35,13 +35,13 @@ When you have completed these steps, you should have:
 
 ### 3. Update repo2docker-action config
 
-Edit lines 24 and 25 of [build.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/main/.github/workflows/build.yaml#L24-L25) and:
+Edit line 35 of [build.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/main/.github/workflows/build.yaml#L34-L35) and:
 
 * uncomment the `IMAGE_NAME` option
 * replace `<quay-username>/<repository-name>` with the info of the `quay.io` repository created at step 2
 * Commit the changes you've made to `build.yaml`
 
-Edit lines 20 and 21 of [test.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/main/.github/workflows/test.yaml#L20-L21) in the same way.
+Edit lines 31 of [test.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/MAIN/.github/workflows/test.yaml#L30-L31) in the same way.
 
 ### 4. Define the environment wanted
 
