@@ -58,7 +58,7 @@ To enable pushing to the appropriate quay.io repository:
   * replace `<quay-username>/<repository-name>` with the info of the `quay.io` repository created at step 2
   * commit the changes you've made to `build.yaml`
 
-* edit lines 27 of [test.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/main/.github/workflows/test.yaml#L27) and remove the `NO_PUSH: "true"` line. This will disable verbose mode and allow the image being pushed to the registry.
+* **IF** you want to also push the image on Pull Request commits, then edit lines 27 of [test.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/main/.github/workflows/test.yaml#L27) and remove the `NO_PUSH: "true"` line. This will disable verbose mode and allow the image being pushed to the registry.
 
 The [Optional Inputs](https://github.com/jupyterhub/repo2docker-action#optional-inputs) section in the [jupyterhub/repo2docker-action](https://github.com/jupyterhub/repo2docker-action) docs provides more details about the `NO_PUSH` option, but also additional inputs that can be passed to the repo2docker-action.
 
