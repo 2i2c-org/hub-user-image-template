@@ -23,7 +23,7 @@ jobs:
     - name: Checkout files in repo
       uses: actions/checkout@main
 
-    - name: Update jupyter dependencies with repo2docker
+    - name: Build and push the image
       uses: jupyterhub/repo2docker-action@master
       with:
         # Make sure username & password/token pair matches your registry credentials
@@ -31,7 +31,7 @@ jobs:
         DOCKER_PASSWORD: ${{ secrets.QUAY_PASSWORD }}
         DOCKER_REGISTRY: "quay.io"
 
-        # Uncomment and modify the following line with your image name.
+        # Uncomment and modify the following line with your image name, otherwise no push will happen
         # IMAGE_NAME: "<quay-username>/<repository-name>"
 
     # Lets us monitor disks getting full as images get bigger over time
