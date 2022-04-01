@@ -21,7 +21,7 @@ jobs:
     - name: checkout files in repo
       uses: actions/checkout@main
 
-    - name: update jupyter dependencies with repo2docker
+    - name: Build the image and push it if `NO_PUSH` disabled
       uses: jupyterhub/repo2docker-action@master
       with: # make sure username & password/token matches your registry
         NO_PUSH: "true"
