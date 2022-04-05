@@ -55,6 +55,8 @@ To enable pushing to the appropriate quay.io repository, edit line 35 of [build.
 * replace `<quay-username>/<repository-name>` with the info of the `quay.io` repository created at step 2
 * commit the changes you've made to `build.yaml`
 
+If you want to see the log of the Github Action that results you can see this via the Github Actions tab on your image repository. If you are triggering this action by merging a PR you should look at the Github Actions tab (and this will show "pushing quay.io/..."). The build log linked from the PR page is not the one for the merge, but the build done for the PR, prior to the merge (and will therefore, by default, not show "pushing quay.io/..."). 
+
 #### Enable quay.io image push for [test.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/MAIN/.github/workflows/test.yaml)
 
 The [test.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/MAIN/.github/workflows/test.yaml) workflow builds the container image on pull requests. It can also push it to quay.io **if** credentials, image name are correctly set and [`NO_PUSH`](https://github.com/jupyterhub/repo2docker-action#optional-inputs) option is removed.
