@@ -24,7 +24,7 @@ This is a template repository for creating dedicated user images for 2i2c hubs.
 
 <!-- /TOC -->
 
-## Overall workflow
+## Overall workflow :world_map:
 
 The overall workflow is to:
 
@@ -40,7 +40,7 @@ The overall workflow is to:
 
 The steps are explained in detail below.
 
-## About this template repository
+## About this template repository :information_source:
 
 This template repository enables [jupyterhub/repo2docker-action](https://github.com/jupyterhub/repo2docker-action).
 This GitHub action builds a Docker image using the contents of this repo and pushes it to the [Quay.io](https://quay.io/) registry.
@@ -68,7 +68,7 @@ It **builds** the image and **pushes** it to the registry.
 
 This workflow is triggerd by every Pull Request commit and it **builds** the image, but it **doesn't** also push it to the registry, unless configured to do so. Checkout [this section](#enable-quayio-image-push-for-testyaml) on how to enable image pushes on Pull Requests.
 
-## How to create and use a custom user image for your hub
+## How to create and use a custom user image for your hub :gear:
 
 ### 1. Use this template
 
@@ -160,7 +160,7 @@ If you find new issues, you can revert back to the previous image by entering th
 
 *This will be streamlined in the future.*
 
-## Push image to a registry other than Quay.io
+## Push image to a registry other than Quay.io :cloud:
 
 The [jupyterhub/repo2docker-action](https://github.com/jupyterhub/repo2docker-action) can build and push the image to registries other than [Quay.io](https://quay.io/). Checkout the [action docs](https://github.com/jupyterhub/repo2docker-action/blob/master/README.md) for the instructions on how to setup your workflow to push to: [AWS Elastic Container Registry](https://github.com/jupyterhub/repo2docker-action#push-repo2docker-image-to-amazon-ecr), [Google Container Registry](https://github.com/jupyterhub/repo2docker-action#push-repo2docker-image-to-google-container-registry) (deprecated but popular), [Google Artifact Registry](https://github.com/jupyterhub/repo2docker-action#push-repo2docker-image-to-google-artifact-registry) (preferred), [Azure Container Registry](https://github.com/jupyterhub/repo2docker-action#push-repo2docker-image-to-azure-container-registry).
 
