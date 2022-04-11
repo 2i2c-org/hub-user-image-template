@@ -98,7 +98,7 @@ When you have completed these steps, you should have:
 
 ### 3. Enable image push to quay.io
 
-Step 2 should have provided the appropriate credentials to push the image to quay.io. This template repository provides two GitHub workflows that are configured to use these credentials to build and push the image to quay.io, but they need additonal configuration. Below are the steps to configure each of them.
+Step 2 should have provided the appropriate credentials to push the image to quay.io. This template repository provides two GitHub workflows that are configured to use these credentials to build and push the image to quay.io, but they need additional configuration. Below are the steps to configure each of them.
 
 #### Enable quay.io image push for [build.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/main/.github/workflows/build.yaml)
 
