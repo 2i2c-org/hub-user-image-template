@@ -1,4 +1,4 @@
-name: Build container image
+name: Build and push container image
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-push:
     runs-on: ubuntu-latest
     steps:
 
