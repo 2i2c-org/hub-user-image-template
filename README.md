@@ -1,9 +1,15 @@
 # hub-user-image-template :paperclip:
 
+This is a template repository for creating dedicated user images for 2i2c hubs.
+
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-- [Overview](#overview)
+- [Overall workflow](#overall-workflow)
 - [About this template repository](#about-this-template-repository)
+  - [Environment](#environment)
+  - [Workflows](#workflows)
+    - [build.yaml](#buildyaml)
+    - [test.yaml](#testyaml)
 - [How to create and use a custom user image for your hub](#how-to-create-and-use-a-custom-user-image-for-your-hub)
   - [Use this template](#1-use-this-template)
   - [Hook the new repository to quay.io](#2-hook-the-new-repository-to-quayio)
@@ -18,9 +24,9 @@
 
 <!-- /TOC -->
 
-## Overview
+## Overall workflow
 
-This is a template repository for creating dedicated user images for our hubs. The overall workflow is to:
+The overall workflow is to:
 
 1. [Fork this repository to create your image repository](#1-use-this-template)
 
@@ -36,17 +42,31 @@ The steps are explained in detail below.
 
 ## About this template repository
 
-* It enables [jupyterhub/repo2docker-action](https://github.com/jupyterhub/repo2docker-action).
-  This GitHub action builds a Docker image using the contents of this repo and pushes it to the [Quay.io](https://quay.io/) registry.
+This template repository enables [jupyterhub/repo2docker-action](https://github.com/jupyterhub/repo2docker-action).
+This GitHub action builds a Docker image using the contents of this repo and pushes it to the [Quay.io](https://quay.io/) registry.
 
-* It provides an example of a `environment.yml` conda configuration file.
-  This file can be used to list all the conda packages that need to be installed by `repo2docker` in 
-  your environment.
-  The `repo2docker-action` will update the [base repo2docker](https://github.com/jupyterhub/repo2docker/blob/HEAD/repo2docker/buildpacks/conda/environment.yml)
-  conda environment with the packages listed in this `environment.yml` file.
+### Environment
+
+It provides an example of a `environment.yml` conda configuration file for repo2docker to use.
+This file can be used to list all the conda packages that need to be installed by `repo2docker` in your environment.
+The `repo2docker-action` will update the [base repo2docker](https://github.com/jupyterhub/repo2docker/blob/HEAD/repo2docker/buildpacks/conda/environment.yml) conda environment with the packages listed in this `environment.yml`
+file.
 
 **Note:**
 A complete list of possible configuration files that can be added to the repository and be used by repo2docker to build the Docker image, can be found in the [repo2docker docs](https://repo2docker.readthedocs.io/en/latest/config_files.html#configuration-files).
+
+### Workflows
+
+This template repository provides two GitHub workflows that can build and push the image to quay.io when configured..
+
+#### [build.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/main/.github/workflows/build.yaml)
+
+This workflow is triggered by every pushed commit on the main branch of the repo (including when a PR is merged).
+It **builds** the image and **pushes** it to the registry.
+
+#### [test.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/MAIN/.github/workflows/test.yaml)
+
+This workflow is triggerd by every Pull Request commit and it **builds** the image, but it **doesn't** also push it to the registry, unless configured to do so. Checkout [this section](#enable-quayio-image-push-for-testyaml) on how to enable image pushes on Pull Requests.
 
 ## How to create and use a custom user image for your hub
 
