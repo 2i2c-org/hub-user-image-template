@@ -112,7 +112,7 @@ To enable pushing to the appropriate quay.io repository, edit line 35 of [build.
 
 ![IMAGE_NAME](images/image-name-in-build-workflow.png)
 
-You can checout the logs of this GitHub Workflow via the Github Actions tab on your image repository.
+You can checkout the logs of this GitHub Workflow via the Github Actions tab on your image repository.
 
 ![Build workflow](images/build-workflow.png)
 
