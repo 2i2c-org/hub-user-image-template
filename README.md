@@ -1,29 +1,38 @@
-# hub-user-image-template
-
-This is a template repository for creating dedicated user images for our hubs. The overall workflow is to:
-
-1. [Fork this repository to create your image repository](#1-use-this-template)
-2. [Hook your image repository to quay.io](#2-hook-the-new-repository-to-quayiohttpsquayio)
-3. [Customize the image](#4-customize-the-image) by editing repo2docker files in your image repository.
-   - Changes can either be done by direct commits to main on your image repository, or through a pull request from a fork of your image repository. Direct commits will build the image and push it to Quay.io. PRs will build the image and offer a link to test it using Binder. Merging the PR will cause a commit on main and therefore trigger a build and push to Quay.io.
-4. [Configure your Hub to use this new image](#6-connect-the-hub-with-this-user-image)
-
-The steps are explained in detail below.
+# hub-user-image-template :paperclip:
 
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+- [Overview](#overview)
 - [About this template repository](#about-this-template-repository)
 - [How to create and use a custom user image for your hub](#how-to-create-and-use-a-custom-user-image-for-your-hub)
   - [Use this template](#1-use-this-template)
-  -[Hook the new repository to quay.io](#2-hook-the-new-repository-to-quayiohttpsquayio)
+  - [Hook the new repository to quay.io](#2-hook-the-new-repository-to-quayio)
   - [Enable image push to quay.io](#3-enable-image-push-to-quayio)
-      - [Enable quay.io image push for build.yaml](#enable-quayio-image-push-for-buildyamlhttpsgithubcom2i2c-orghub-user-image-templateblobmaingithubworkflowsbuildyaml)
-      - [Enable quay.io image push for test.yaml](#enable-quayio-image-push-for-testyamlhttpsgithubcom2i2c-orghub-user-image-templateblobmaingithubworkflowstestyaml)
+      - [Enable quay.io image push for build.yaml](#enable-quayio-image-push-for-buildyaml)
+      - [Enable quay.io image push for test.yaml](#enable-quayio-image-push-for-testyaml)
   - [Customize the image](#4-customize-the-image)
   - [Build and push the image](#5-build-and-push-the-image)
   - [Connect the hub with this user image](#6-connect-the-hub-with-this-user-image)
   - [Test the new image](#7-test-the-new-image)
 - [Push image to a registry other than Quay.io](#push-image-to-a-registry-other-than-quayio)
+
 <!-- /TOC -->
+
+## Overview
+
+This is a template repository for creating dedicated user images for our hubs. The overall workflow is to:
+
+1. [Fork this repository to create your image repository](#1-use-this-template)
+
+2. [Hook your image repository to quay.io](#2-hook-the-new-repository-to-quayio)
+
+3. [Customize the image](#4-customize-the-image) by editing repo2docker files in your image repository.
+
+   Changes can either be done by direct commits to main on your image repository, or through a pull request from a fork of your image repository. Direct commits will build the image and push it to Quay.io. PRs will build the image and offer a link to test it using Binder. Merging the PR will cause a commit on main and therefore trigger a build and push to Quay.io.
+
+4. [Configure your Hub to use this new image](#6-connect-the-hub-with-this-user-image)
+
+The steps are explained in detail below.
 
 ## About this template repository
 
