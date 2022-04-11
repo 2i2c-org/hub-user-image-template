@@ -5,7 +5,7 @@ This is a template repository for creating dedicated user images for 2i2c hubs.
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
 - [Overall workflow](#overall-workflow)
-- [About this template repository](#about-this-template-repository-informationsource)
+- [About this template repository](#about-this-template-repository-information_source)
   - [Environment](#the-environment)
   - [Workflows](#the-github-workflows)
     - [build.yaml](#1-build-and-push-container-image-arrow_right-buildyaml)
