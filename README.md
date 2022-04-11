@@ -5,12 +5,13 @@ This is a template repository for creating dedicated user images for 2i2c hubs.
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
 - [Overall workflow](#overall-workflow)
-- [About this template repository](#about-this-template-repository)
+- [About this template repository](#about-this-template-repository-informationsource)
   - [Environment](#the-environment)
   - [Workflows](#the-github-workflows)
-    - [build.yaml](#1-buildyaml)
-    - [test.yaml](#2-testyaml)
-- [How to create and use a custom user image for your hub](#how-to-create-and-use-a-custom-user-image-for-your-hub)
+    - [build.yaml](#1-build-and-push-container-image-arrow_right-buildyaml)
+    - [test.yaml](#2-test-container-image-build-arrow_right-testyamll)
+    - [binder.yaml](#3-test-this-pr-on-binder-badge-arrowright-binderyaml)
+- [How to create and use a custom user image for your hub](#how-to-create-and-use-a-custom-user-image-for-your-hub-gear)
   - [Use this template](#1-use-this-template)
   - [Hook the new repository to quay.io](#2-hook-the-new-repository-to-quayio)
   - [Enable image push to quay.io](#3-enable-image-push-to-quayio)
@@ -20,11 +21,11 @@ This is a template repository for creating dedicated user images for 2i2c hubs.
   - [Build and push the image](#5-build-and-push-the-image)
   - [Connect the hub with this user image](#6-connect-the-hub-with-this-user-image)
   - [Test the new image](#7-test-the-new-image)
-- [Push image to a registry other than Quay.io](#push-image-to-a-registry-other-than-quayio)
+- [Push image to a registry other than Quay.io](#push-image-to-a-registry-other-than-quayio-cloud)
 
 <!-- /TOC -->
 
-## Overall workflow :world_map:
+## Overall workflow
 
 The overall workflow is to:
 
@@ -70,7 +71,7 @@ It **builds** the image and **pushes** it to the registry.
 
 This workflow is triggerd by every Pull Request commit and it **builds** the image, but it **doesn't** push it to the registry, unless explicitly configured to do so. Checkout [this section](#enable-quayio-image-push-for-testyaml) on how to enable image pushes on Pull Requests.
 
-#### 3. Test this PR on Binder Badge :arrow_right: [binder.yaml]
+#### 3. Test this PR on Binder Badge :arrow_right: [binder.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/MAIN/.github/workflows/binder.yaml)
 
 This workflow posts a comment inside a pull request, every time a pull request gets opened. The comment contains a "Test this PR on Binder" badge, which can be used to access the image defined by the PR in [mybinder.org](https://mybinder.org/).
 
@@ -151,8 +152,6 @@ This workflow is triggered by pull request and by default, if `NO_PUSH` flag is 
 * Create a Pull Request with this commit, or push it dirrectly to the `main` branch.
 
 * If you merge the PR above or directly push the commit to the `main` branch, the GitHub Action will automatically build and push the container image. Wait for this action to finish.
-
-![Workflows](images/workflows.png)
 
 ### 5. Build and push the image
 
