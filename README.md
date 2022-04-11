@@ -1,6 +1,14 @@
 # hub-user-image-template
 
-This is a template repository for creating dedicated user images for our hubs.
+This is a template repository for creating dedicated user images for our hubs. The overall workflow is to 
+
+1. Fork this repository to create your image repository
+2. Hook your image repository to quay.io
+3. Customize the image by editing repo2docker files in your image repository.  
+   - Changes can either be done by direct commits to main on your image repository, or through a pull request from a fork of your image repository. Direct commits will build the image and push it to Quay.io. PRs will build the image and offer a link to test it using Binder. Merging the PR will cause a commit on main and therefore trigger a build and push to Quay.io.
+4. Configure your Hub to use this new image.
+
+The steps are explained in detail below.
 
 ## About this template repository
 
@@ -39,13 +47,15 @@ Step 2 should have provided the appropriate credentials to push the image to qua
 
 #### Enable quay.io image push for [build.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/main/.github/workflows/build.yaml)
 
-The [build.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/main/.github/workflows/build.yaml) workflow builds the container image and pushes it to quay.io **if** credentials and image name are properly set. This happens on every pushed commit on the main branch of the repo.
+The [build.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/main/.github/workflows/build.yaml) workflow builds the container image and pushes it to quay.io **if** credentials and image name are properly set. This happens on every pushed commit on the main branch of the repo (including when a PR is merged).
 
 To enable pushing to the appropriate quay.io repository, edit line 35 of [build.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/main/.github/workflows/build.yaml#L34-L35) and:
 
 * uncomment the `IMAGE_NAME` option
 * replace `<quay-username>/<repository-name>` with the info of the `quay.io` repository created at step 2
 * commit the changes you've made to `build.yaml`
+
+If you want to see the log of the Github Action that results you can see this via the Github Actions tab on your image repository. If you are triggering this action by merging a PR you should look at the Github Actions tab (and this will show "pushing quay.io/..."). The build log linked from the PR page is not the one for the merge, but the build done for the PR, prior to the merge (and will therefore, by default, not show "pushing quay.io/..."). 
 
 #### Enable quay.io image push for [test.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/MAIN/.github/workflows/test.yaml)
 
