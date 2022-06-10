@@ -2,44 +2,23 @@
 
 This is a template repository for creating dedicated user images for 2i2c hubs.
 
-<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
-
-- [Overall workflow](#overall-workflow)
-- [About this template repository](#about-this-template-repository-information_source)
-  - [Environment](#the-environment)
-  - [Workflows](#the-github-workflows)
-    - [build.yaml](#1-build-and-push-container-image-arrow_right-buildyaml)
-    - [test.yaml](#2-test-container-image-build-arrow_right-testyamll)
-    - [binder.yaml](#3-test-this-pr-on-binder-badge-arrowright-binderyaml)
-- [How to create and use a custom user image for your hub](#how-to-create-and-use-a-custom-user-image-for-your-hub-gear)
-  - [Use this template](#1-use-this-template)
-  - [Hook the new repository to quay.io](#2-hook-the-new-repository-to-quayio)
-  - [Enable image push to quay.io](#3-enable-image-push-to-quayio)
-      - [Enable quay.io image push for build.yaml](#enable-quayio-image-push-for-buildyaml)
-      - [Enable quay.io image push for test.yaml](#enable-quayio-image-push-for-testyaml)
-  - [Customize the image](#4-customize-the-image)
-  - [Build and push the image](#5-build-and-push-the-image)
-  - [Connect the hub with this user image](#6-connect-the-hub-with-this-user-image)
-  - [Test the new image](#7-test-the-new-image)
-- [Push image to a registry other than Quay.io](#push-image-to-a-registry-other-than-quayio-cloud)
-
-<!-- /TOC -->
-
-## Overall workflow
+## Overall workflow :gear:
 
 The overall workflow is to:
 
-1. [Fork this repository to create your image repository](#1-use-this-template)
+1. Fork this repository to create your image repository
 
-2. [Hook your image repository to quay.io](#2-hook-the-new-repository-to-quayio)
+2. Hook your image repository to quay.io
 
-3. [Customize the image](#4-customize-the-image) by editing repo2docker files in your image repository.
+3. Customize the image by editing repo2docker files in your image repository.
 
    Changes can either be done by direct commits to main on your image repository, or through a pull request from a fork of your image repository. Direct commits will build the image and push it to Quay.io. PRs will build the image and offer a link to test it using Binder. Merging the PR will cause a commit on main and therefore trigger a build and push to Quay.io.
 
-4. [Configure your Hub to use this new image](#6-connect-the-hub-with-this-user-image)
+4. Configure your Hub to use this new image
 
-The steps are explained in detail below.
+### In-depth guide
+
+Checkout the 2i2c docs for an in-depth guide on how to use this template repository to create a custom user image and use it for your hub :arrow_right: https://docs.2i2c.org/en/latest/admin/howto/hub-user-image-template-guide.md.
 
 ## About this template repository :information_source:
 
@@ -75,7 +54,3 @@ This workflow is triggerd by every Pull Request commit and it **builds** the ima
 This workflow posts a comment inside a pull request, every time a pull request gets opened. The comment contains a "Test this PR on Binder" badge, which can be used to access the image defined by the PR in [mybinder.org](https://mybinder.org/).
 
 ![Test this PR on Binder](images/binder-badge.png)
-
-## How to create and use a custom user image for your hub :gear:
-
-Checkout the 2i2c docs for an in-depth guide on how to use this template repositoru to create a custom user image and use it for your hub :arrow_right: https://docs.2i2c.org/en/latest/admin/howto/hub-user-image-template-guide.md.
