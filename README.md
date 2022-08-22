@@ -47,7 +47,7 @@ It **builds** the image and **pushes** it to the registry.
 
 #### 2. Test container image build :arrow_right: [test.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/MAIN/.github/workflows/test.yaml)
 
-This workflow is triggerd by every Pull Request commit and it **builds** the image, but it **doesn't** push it to the registry, unless explicitly configured to do so. Checkout [this section](#enable-quayio-image-push-for-testyaml) on how to enable image pushes on Pull Requests.
+This workflow is triggerd by every Pull Request commit and it **builds** the image, but it **doesn't** push it to the registry, unless explicitly configured to do so. Checkout [this section](https://docs.2i2c.org/en/latest/admin/howto/environment/hub-user-image-template-guide.html#enable-quay-io-image-push-for-test-yaml) on how to enable image pushes on Pull Requests.
 
 #### 3. Test this PR on Binder Badge :arrow_right: [binder.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/MAIN/.github/workflows/binder.yaml)
 
