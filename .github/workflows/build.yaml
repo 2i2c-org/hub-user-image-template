@@ -32,7 +32,12 @@ jobs:
         DOCKER_REGISTRY: "quay.io"
         # Disable pushing a 'latest' tag, as this often just causes confusion
         LATEST_TAG_OFF: true
-
+        # Put repo contents in /srv/repo, rather than the default (/home/jovyan). The home directory
+        # is mounted over by persistent storage when we are using the built image in a JupyterHub, and
+        # so all contents put in /home/jovyan are lost. This particularly prevents any 'start' script from
+        # working, as it is needed in runtime.
+        REPO_DIR: /srv/repo
+        #
         # Uncomment and modify the following line with your image name, otherwise no push will happen
         # IMAGE_NAME: "<quay-username>/<repository-name>"
 
