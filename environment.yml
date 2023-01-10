@@ -11,6 +11,6 @@ dependencies:
   # which can limit us to older package versions
   - python=3.10
   # Everyone wants to use nbgitpuller for everything, so let's do that
-  - nbgitpuller
+  - nbgitpuller=1.1.*
   # Add other packages here
   # -
