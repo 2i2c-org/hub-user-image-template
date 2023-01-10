@@ -10,5 +10,7 @@ dependencies:
   # Set default python version to 3.10 - repo2docker sets it to 3.7 instead by default,
   # which can limit us to older package versions
   - python=3.10
+  # Everyone wants to use nbgitpuller for everything, so let's do that
+  - nbgitpuller=1.1.*
   # Add other packages here
   # -
