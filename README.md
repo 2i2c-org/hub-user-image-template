@@ -34,22 +34,20 @@ The `repo2docker-action` will update the [base repo2docker](https://github.com/j
 **Note:**
 A complete list of possible configuration files that can be added to the repository and be used by repo2docker to build the Docker image, can be found in the [repo2docker docs](https://repo2docker.readthedocs.io/en/latest/config_files.html#configuration-files).
 
-### The GitHub workflows
+### The GitHub Action workflows
 
-This template repository provides two GitHub workflows that can build and push the image to quay.io when configured.
+This template repository provides some GitHub Action workflows that can build and push the image to quay.io when configured, and test the image on Binder.
 
 ![Workflows](images/workflows.png)
 
 #### 1. Build and push container image :arrow_right: [build.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/main/.github/workflows/build.yaml)
 
-This workflow is triggered by every pushed commit on the main branch of the repo (including when a PR is merged).
-It **builds** the image and **pushes** it to the registry.
+This workflow is triggered by every pushed commit on the main branch of the repo (including when a PR is merged), and every commit made to a Pull Request opened against the default branch (`main`)..
+It **builds** the image and **pushes** it to the registry _on pushes to the default branch_.
+During PR builds, the image is **only** built and **not** pushed, unless explicitly configured to do so.
+Checkout [this section](https://docs.2i2c.org/en/latest/admin/howto/environment/hub-user-image-template-guide.html#enable-quay-io-image-push-for-test-yaml) on how to enable image pushes on Pull Requests.
 
-#### 2. Test container image build :arrow_right: [test.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/MAIN/.github/workflows/test.yaml)
-
-This workflow is triggerd by every Pull Request commit and it **builds** the image, but it **doesn't** push it to the registry, unless explicitly configured to do so. Checkout [this section](https://docs.2i2c.org/en/latest/admin/howto/environment/hub-user-image-template-guide.html#enable-quay-io-image-push-for-test-yaml) on how to enable image pushes on Pull Requests.
-
-#### 3. Test this PR on Binder Badge :arrow_right: [binder.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/MAIN/.github/workflows/binder.yaml)
+#### 2. Test this PR on Binder Badge :arrow_right: [binder.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/MAIN/.github/workflows/binder.yaml)
 
 This workflow posts a comment inside a pull request, every time a pull request gets opened. The comment contains a "Test this PR on Binder" badge, which can be used to access the image defined by the PR in [mybinder.org](https://mybinder.org/).
 
