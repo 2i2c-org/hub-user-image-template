@@ -45,7 +45,7 @@ This template repository provides some GitHub Action workflows that can build an
 This workflow is triggered by every pushed commit on the main branch of the repo (including when a PR is merged), and every commit made to a Pull Request opened against the default branch (`main`)..
 It **builds** the image and **pushes** it to the registry _on pushes to the default branch_.
 During PR builds, the image is **only** built and **not** pushed, unless explicitly configured to do so.
-Checkout [this section](https://docs.2i2c.org/en/latest/admin/howto/environment/hub-user-image-template-guide.html#enable-quay-io-image-push-for-test-yaml) on how to enable image pushes on Pull Requests.
+Checkout [this section](https://docs.2i2c.org/en/latest/admin/howto/environment/hub-user-image-template-guide.html#enable-quay-io-image-push-during-pull-requests) on how to enable image pushes on Pull Requests.
 
 #### 2. Test this PR on Binder Badge :arrow_right: [binder.yaml](https://github.com/2i2c-org/hub-user-image-template/blob/MAIN/.github/workflows/binder.yaml)
 
