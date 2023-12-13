@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build-and-push:
@@ -23,9 +26,11 @@ jobs:
     - name: Checkout files in repo
       uses: actions/checkout@main
 
-    - name: Build and push the image to quay.io
+    - name: Build the image and push to quay.io if not a pull request
       uses: jupyterhub/repo2docker-action@master
       with:
+        # Don't push the image during a PR build
+        NO_PUSH: "${{ github.event_name == 'pull_request' }}"
         # Make sure username & password/token pair matches your registry credentials
         DOCKER_USERNAME: ${{ secrets.QUAY_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.QUAY_PASSWORD }}
