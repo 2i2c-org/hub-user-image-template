@@ -13,6 +13,9 @@ dependencies:
   # Everyone wants to use nbgitpuller for everything, so let's do that
   - nbgitpuller=1.1.*
   # Add other packages here
+  - jupyterlab==3
   - numpy
-  - scipy
   - matplotlib
+  - gh-scoped-creds
+  - nodejs>=20,<21
+  - mystmd
