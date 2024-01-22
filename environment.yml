@@ -1,0 +1,10 @@
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - fastqc=0.11.9
+  - trimmomatic=0.39
+  - bwa=0.7.17=ha92aebf_3
+  - samtools=1.9=h8ee4bcc_1
+  - bcftools=1.9
