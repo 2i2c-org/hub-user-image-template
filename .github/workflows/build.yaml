@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
   build-and-push:
@@ -26,11 +23,9 @@ jobs:
     - name: Checkout files in repo
       uses: actions/checkout@main
 
-    - name: Build the image and push to quay.io if not a pull request
+    - name: Build and push the image to quay.io
       uses: jupyterhub/repo2docker-action@master
       with:
-        # Don't push the image during a PR build
-        NO_PUSH: "${{ github.event_name == 'pull_request' }}"
         # Make sure username & password/token pair matches your registry credentials
         DOCKER_USERNAME: ${{ secrets.QUAY_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.QUAY_PASSWORD }}
@@ -44,7 +39,7 @@ jobs:
         REPO_DIR: /srv/repo
         #
         # Uncomment and modify the following line with your image name, otherwise no push will happen
-        # IMAGE_NAME: "<quay-username>/<repository-name>"
+        IMAGE_NAME: "leap-stc/pangeo-notebook-microdino"
 
     # Lets us monitor disks getting full as images get bigger over time
     - name: Show how much disk space is left
