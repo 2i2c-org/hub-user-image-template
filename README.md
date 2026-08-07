@@ -1,4 +1,6 @@
-# hub-user-image-template :paperclip:
+# ❗This is no longer maintained. Use the following templates instead:
+- https://github.com/2i2c-org/example-inherit-from-community-image/
+- https://github.com/2i2c-org/example-image-stack
 
 This is a template repository for creating dedicated user images for 2i2c hubs.
 
